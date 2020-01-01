@@ -363,79 +363,6 @@ void power()
   print_string("  ...^^\n");
 }
 
-
-void total_diameters(){
- clear_screen();
-init_vga_fore(WHITE);
-		int j , i ,sum ,sum1 ,n=3,x,y;
-	        int a[n][n] /*={{2,1,4},
-	                        {4,7,5},
-				{6,2,1}}*/;
-///enter the element matrix///
-
-	        sleep(CALC_SLEEP);
-	        for(i=0;i<n;i++){
-                   for(j=0;j<n;j++)
-		   {	
-		   print_string("Enter the element a");
-                   y=i+1;
-                   print_int(y);
-                   x=j+1;
-                   print_int(x);
-                   print_string(" : ");
-                   sleep(CALC_SLEEP);
-		         a[i][j]=read_int;	
-	           }
-	         }
-
-/// print matrix////
-
-	print_string("\nThe matrix is :");
-        print_new_line();
-        sleep(CALC_SLEEP);
-        for(i=0;i<n;i++)
-        {
-           for(j=0;j<n;j++){	
-              print_string(" ");
-	      print_int(a[i][j]);
-              sleep(CALC_SLEEP);	
-	    }
-	  print_new_line();
-         }
-	
-///The Total main diameter///
-     sleep(CALC_SLEEP);
-     for(i=0;i<n;i++){
-	for(j=0;j<n;j++)
-	{	
-	    if(i==j)
-	    sum=sum+a[i][j];
-        }
-     }
-
-        print_string("The Total main diameter =");
-        sleep(CALC_SLEEP);
-        print_int(sum);
-	print_new_line();
-
-///The Total secondray diameter///
-
-	for(i=0;i<n;i++){
-	  for(j=0;j<n;j++){	
-	    if(i+j==n-1)
-		sum1=sum1+a[i][j];
-          }
-	}	
-	
-	print_string("The Total secondray diameter =");
-        sleep(CALC_SLEEP);
-        print_int(sum1);
-	print_new_line();
-}
-
-
-
-
 void kernel_entry()
 {
   init_vga(WHITE, BLACK);
@@ -447,8 +374,7 @@ init_vga_fore(YELLOW);
 print_string("1-^..Calculat Age Aplication..^\n\n");
 print_string("2-^..Find Max Element In Array And Sum Of Their Elements..^\n\n");
 print_string("3-^..Power && base App..^\n\n");
-print_string("4-^..Total main & secondray diameter array..^\n\n");
-print_string("5-^..EXIT..^\n\n");
+print_string("4-^..EXIT..^\n\n");
 init_vga_fore(WHITE);
 print_string("\n^..Enter choice..^\n");
 sleep(CALC_SLEEP);
@@ -462,8 +388,6 @@ switch(num)
   case 2:array_sum();break;
 
   case 3:power();break;
-
-  case 4:total_diameters();break;
  
   case 5:print_string("EXIT...");break;
 
