@@ -443,7 +443,7 @@ switch(num)
 void kernel_entry()
 {
   init_vga(WHITE, BLACK);
-  int pass, nam ,nour;
+  int pass;
 while(1){
 init_vga_fore(YELLOW);
 print_string("\n\n ^_^................................................^_^");
