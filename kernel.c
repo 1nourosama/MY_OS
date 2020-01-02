@@ -221,6 +221,22 @@ void read_numbers(int *day, int *month,int *year)
   *year = read_int();
 }
 
+void test_input()
+{
+  char ch = 0;
+  char keycode = 0;
+  do{
+    keycode = get_input_keycode();
+    if(keycode == KEY_ENTER){
+      print_new_line();
+    }else{
+      ch = get_ascii_char(keycode);
+      print_char(ch);
+    }
+    sleep(0x02FFFFFF);
+  }while(ch > 0);
+}
+
 void array_sum(){
 
  clear_screen();
@@ -363,20 +379,41 @@ void power()
   print_string("  ...^^\n");
 }
 
-void kernel_entry()
-{
-  init_vga(WHITE, BLACK);
 
+void call(){
+clear_screen();
 while(1){
+init_vga_fore(GREEN);
+print_string("\n\n    *************************************************************");
+print_string("\n\n    *");
 init_vga_fore(YELLOW);
-print_string("     ^^... MENU APP ...^^\n\n");
+print_string("             ^^... MENU APP ...^^                          ");
+init_vga_fore(GREEN);
+print_string("*");
+print_string("\n\n    *************************************************************");
+print_string("\n\n    *");
 init_vga_fore(YELLOW);
-print_string("1-^..Calculat Age Aplication..^\n\n");
-print_string("2-^..Find Max Element In Array And Sum Of Their Elements..^\n\n");
-print_string("3-^..Power && base App..^\n\n");
-print_string("4-^..EXIT..^\n\n");
+print_string(" 1- Calculat Age Aplication..                              ");
+init_vga_fore(GREEN);
+print_string("*");
+print_string("\n\n    *");
+init_vga_fore(YELLOW);
+print_string(" 2- Find Max Element In Array And Sum Of Their Elements..  ");
+init_vga_fore(GREEN);
+print_string("*");
+print_string("\n\n    *");
+init_vga_fore(YELLOW);
+print_string(" 3- Power && base App..                                    ");
+init_vga_fore(GREEN);
+print_string("*");
+print_string("\n\n    *");
+init_vga_fore(YELLOW);
+print_string(" 4- EXIT..                                                 ");
+init_vga_fore(GREEN);
+print_string("*");
+print_string("\n\n    *************************************************************");
 init_vga_fore(WHITE);
-print_string("\n^..Enter choice..^\n");
+print_string("\n\n\n  ^..Enter choice..^\n");
 sleep(CALC_SLEEP);
 int num=read_int();
 
@@ -391,7 +428,8 @@ switch(num)
  
   case 5:print_string("EXIT...");break;
 
-  default:print_string("...Wrong input...");
+  default:init_vga_fore(RED);
+          print_string("<<< THE ENTRY IS WRONG >>>");
 
 }
     
@@ -401,6 +439,41 @@ switch(num)
     getchar();
     clear_screen();
 }
+}
+void kernel_entry()
+{
+  init_vga(WHITE, BLACK);
+  int pass, nam ,nour;
+while(1){
+init_vga_fore(YELLOW);
+print_string("\n\n ^_^................................................^_^");
+init_vga_fore(WHITE);
+print_string("\n\n\t username :");
+init_vga_fore(YELLOW);
+test_input();
+init_vga_fore(WHITE);
+print_string("\n\n\t password :");
+init_vga_fore(YELLOW);
+sleep(CALC_SLEEP);
+pass=read_int();
+
+if (pass==1234){
+init_vga_fore(GREEN);
+print_string("\n\n\n   ^_^.... ! Welcome to my Operating System ! ....^_^");
+test_input();
+call();
+}
+else{
+init_vga_fore(RED);
+print_string("\n\n    <<< THE ENTRY IS WRONG >>>");
+}
+
+init_vga_fore(BRIGHT_MAGENTA);
+    print_string("\n\nPress any key to reload screen...");
+    getchar();
+    clear_screen();
+}
+
 
 
 }
