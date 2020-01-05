@@ -1,0 +1,63 @@
+
+int total_diameters{
+		int j , i ,sum ,sum1 ,n=3;
+	        int a[n][n] /*={{2,1,4},
+	                        {4,7,5},
+				{6,2,1}}*/;
+///enter the element matrix///
+
+	        sleep(CALC_SLEEP);
+	        for(i=0;i<n;i++){
+                   for(j=0;j<n;j++)
+		   {	
+		   print_string("Enter the element a");
+                   print_int(i+1);
+                   print_int(j+1);
+                   print_string(" : ");
+                   sleep(CALC_SLEEP);
+		   a[i][j]=read_int;	
+	           }
+	         }
+
+/// print matrix////
+
+	print_string("\nThe matrix is :");
+        print_new_line();
+        sleep(CALC_SLEEP);
+        for(i=0;i<n;i++)
+        {
+           for(j=0;j<n;j++){	
+              print_string(" ");
+	      print_int(a[i][j]);	
+	    }
+	  print_new_line();
+         }
+	
+///The Total main diameter///
+
+     for(i=0;i<n;i++){
+	for(j=0;j<n;j++)
+	{	
+	    if(i==j)
+	    sum+=a[i][j];
+        }
+     }
+
+        print_string("The Total main diameter =");
+        print_int(sum);
+	print_new_line();
+
+///The Total secondray diameter///
+
+	for(i=0;i<n;i++){
+	  for(j=0;j<n;j++){	
+	    if(i+j==n-1)
+		sum1+=a[i][j];
+          }
+	}	
+	
+	print_string("The Total secondray diameter =");
+        print_int(sum1);
+	print_new_line();
+	
+	}
