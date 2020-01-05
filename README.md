@@ -15,6 +15,7 @@ control and coordinates use of hardware among various application and users
 To develop our abilities and skills and start using the world of programming and design in a practical way in life and that we are able to keep pace with technological progress
 
 
-~~ To Find out more go to WiKi.........
+                                    
+                                    >>>>To Find out more detail go to WiKi<<<<
 
 
