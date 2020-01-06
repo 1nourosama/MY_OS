@@ -84,7 +84,7 @@ void outb(uint16 port, uint8 data)
 void move_cursor(uint16 pos)
 {
   outb(0x3D4, 14);
-  outb(0x3D5, ((pos >> 8) & 0x00FF));
+  outb(0x3D5, ((pos >>8 & 0x00FF));
   outb(0x3D4, 15);
   outb(0x3D5, pos & 0x00FF);
 }
@@ -386,15 +386,16 @@ void power()
 
 void call(){
 clear_screen();
-while(1){
+int num;
+while(1 && num!=4){
 init_vga_fore(BRIGHT_GREEN);
-print_string("\n\n    *************************************************************");
+print_string("\n\n    ***********************************************************");
 print_string("\n    *");
 init_vga_fore(YELLOW);
 print_string("             ^^... MENU APP ...^^                          ");
 init_vga_fore(BRIGHT_GREEN);
 print_string("*");
-print_string("\n    *************************************************************");
+print_string("\n    ***********************************************************");
 print_string("\n\n    *");
 init_vga_fore(YELLOW);
 print_string(" 1- Calculat Age Application..                             ");
@@ -415,22 +416,55 @@ init_vga_fore(YELLOW);
 print_string(" 4- EXIT..                                                 ");
 init_vga_fore(BRIGHT_GREEN);
 print_string("*");
-print_string("\n    *************************************************************");
+print_string("\n    ***********************************************************");
 init_vga_fore(WHITE);
 print_string("\n\n\n  ^..Enter choice..^\n");
 sleep(CALC_SLEEP);
-int num=read_int();
+num=read_int();
 
 switch(num)
 {
 
-  case 1:calcualte_age();break;
+  case 1:{calcualte_age();}break;
 
-  case 2:array_sum();break;
+  case 2:{array_sum();}break;
 
-  case 3:power();break;
+  case 3:{power();}break;
  
-  case 5:print_string("EXIT...");break;
+  case 4:{
+clear_screen();
+init_vga_fore(YELLOW);
+print_string("\n\n             ^_6");
+init_vga_fore(BRIGHT_GREEN);
+print_string("..............................");
+init_vga_fore(YELLOW);
+print_string("^_^");
+print_string("\n\n                       SHUTDOWN");
+print_string("\n\n                       REBOOT");
+init_vga_fore(YELLOW);
+print_string("\n\n             ^_^");
+init_vga_fore(BRIGHT_GREEN);
+print_string("..............................");
+init_vga_fore(YELLOW);
+print_string("^_^");
+init_vga_fore(WHITE);
+print_string("\n\n\n     Enter the choice :");
+sleep(CALC_SLEEP);
+int xxx=read_int();
+clear_screen();
+
+if(xxx==1){
+print_string("\n\n\n\n\n\n\n                       ^^....G");init_vga_fore(BLUE);
+print_string("O");init_vga_fore(GREEN);
+print_string("O");init_vga_fore(MAGENTA);
+print_string("D");init_vga_fore(BRIGHT_MAGENTA);
+print_string(" B");init_vga_fore(GREY);
+print_string("U");init_vga_fore(CYAN);
+print_string("Y....^^");init_vga_fore(RED); 
+}
+
+else {kernel_entry();}
+}break;
 
   default:init_vga_fore(BRIGHT_RED);
           print_string("  <<< THE ENTRY IS WRONG >>>");
@@ -439,16 +473,13 @@ switch(num)
     
 
     init_vga_fore(BRIGHT_MAGENTA);
-    print_string("\n\n  Press any key to reload screen...");
+    print_string("\n\n\n\n  Press any key to reload screen...");
     getchar();
     clear_screen();
 }
 }
-void kernel_entry()
-{
-  init_vga(WHITE, BLACK);
-  int pass;
 
+void display(){
 init_vga_fore(YELLOW);
 print_string("\n\n\n               ^_^....! ");
 init_vga_fore(WHITE);
@@ -542,13 +573,21 @@ print_string("\n\n      \t Dr.Hazem Elbaz");
 init_vga_fore(BRIGHT_GREEN);
 print_string("\n\n\n                   >>> Press any key to reload screen <<<");
 getchar();
-clear_screen();
+clear_screen();}
 
-while(1){
+
+void kernel_entry()
+{
+  init_vga(WHITE, BLACK);
+  int pass;
+
+display();
+
+
 init_vga_fore(YELLOW);
-print_string("\n\n           ^_^");
+print_string("\n\n             ^_^");
 init_vga_fore(BRIGHT_GREEN);
-print_string("................................................");
+print_string("........................................");
 init_vga_fore(YELLOW);
 print_string("^_^");
 init_vga_fore(WHITE);
@@ -556,26 +595,57 @@ print_string("\n\n\n                       \t username :");
 init_vga_fore(YELLOW);
 sleep(CALC_SLEEP);
 pass=read_int();
-//test_input();
 init_vga_fore(WHITE);
 print_string("\n\n                       \t password :");
 init_vga_fore(YELLOW);
 sleep(CALC_SLEEP);
 pass=read_int();
+init_vga_fore(YELLOW);
+print_string("\n\n             ^_^");
+init_vga_fore(BRIGHT_GREEN);
+print_string("........................................");
+init_vga_fore(YELLOW);
+print_string("^_^");
+getchar();
 
-if (pass==1234){
-call();
-}
-else{
+while(pass!=1234){
 init_vga_fore(BRIGHT_RED);
 print_string("\n\n                    <<< THE ENTRY IS WRONG >>>");
-}
-
 init_vga_fore(BRIGHT_GREEN);
 print_string("\n\n                         >>> Retry <<<");
 getchar();
 clear_screen();
+print_string("\n\n             ^_^");
+init_vga_fore(BRIGHT_GREEN);
+print_string("........................................");
+init_vga_fore(YELLOW);
+print_string("^_^");
+init_vga_fore(WHITE);
+print_string("\n\n\n                       \t username :");
+init_vga_fore(YELLOW);
+sleep(CALC_SLEEP);
+pass=read_int();
+init_vga_fore(WHITE);
+print_string("\n\n                       \t password :");
+init_vga_fore(YELLOW);
+sleep(CALC_SLEEP);
+pass=read_int();
+init_vga_fore(YELLOW);
+print_string("\n\n             ^_^");
+init_vga_fore(BRIGHT_GREEN);
+print_string("........................................");
+init_vga_fore(YELLOW);
+print_string("^_^");
+getchar();
+
+
 }
+
+call();
+
+
+clear_screen();
+
 
 
 
